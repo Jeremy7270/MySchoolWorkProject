@@ -1,0 +1,47 @@
+using System;
+using System.IO;
+namespace ComputeAverageApp
+{
+    public class ComputeAverageProgram
+    {
+        public static void Main()
+        {
+        double number1,number2,number3,number4,number5;
+        
+        Console.Write("Enter your name: ");
+        String name = Console.ReadLine();
+        
+        Console.Write("English: ");
+        number1 = Convert.ToDouble(Console.ReadLine());
+ 
+        Console.Write("Math: ");
+        number2 = Convert.ToDouble(Console.ReadLine());
+ 
+        Console.Write("Science: ");
+        number3 = Convert.ToDouble(Console.ReadLine());
+ 
+        Console.Write("Filipino: ");
+        number4 = Convert.ToDouble(Console.ReadLine());
+     
+        Console.Write("History: ");
+        number5 = Convert.ToDouble(Console.ReadLine());
+     
+ 
+        double result = (number1 + number2 + number3 + number4 + number5) / 5;
+        Console.WriteLine("The general average of {0} is: {6} ",
+    name, number1, number2, number3, number4, number5, result);
+    
+    if (result > 75)
+    {
+        Console.WriteLine("The Student Passed");
+    }
+    else if (result < 75)
+    {
+        Console.WriteLine("The Student Failed");
+    }
+    Console.Write("\nPress any key to exit...");
+            Console.ReadKey();
+    
+        }
+    }
+}

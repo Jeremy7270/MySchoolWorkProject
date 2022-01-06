@@ -1,0 +1,28 @@
+1.)
+use MongoLab1
+
+db.createCollection("Employees")
+
+db.Employees.insertMany([{ "Id": 1, "Name": "Steve Badiola", "Salary": 16099.55, "Position": "President", "Rank": 1, "ReportingTo": null,}]);
+db.Employees.insertMany([{ "Id": 2, "Name": "Jamir Garcia", "Salary": 14567.12, "Position": "Vice President", "Rank": 2, "ReportingTo": ["President"],}]);
+db.Employees.insertMany([{ "Id": 3, "Name": "Reg Rubio", "Salary": 13891.22, "Position": "Secretary", "Rank": 3, "ReportingTo": ["Vice President],}]);
+db.Employees.insertMany([{ "Id": 4, "Name": "Ian Tayao", "Salary": 13000, "Position": "Treasurer", "Rank": 4, "ReportingTo": ["Secretary", "Vice President"],}]);
+
+db.Employees.update({"Id": 1},{"$unset":{"ReportingTo": null}});
+
+db.Employees.updateMany({},{$inc":{Salary": + 5000}});
+
+db.Employees.update({"Name": "Reg Rubio"}, {"$set":{ReportingTo":["Vice President", "President"]}});
+db.Employees.update({"Name": "Ian Tayao"}, {"$set":{ReportingTo":["Secretary", "Vice President", "President"]}});
+
+db.Employees.find({"Salary":{"$gt": 21000}}).pretty()
+
+db.Employees.find({"Name": {"$regex": /S/i}});
+db.Employees.find({"Name": {"$regex": /R/i}});
+
+db.Employees.find({"ReportingTo": {"$nin":["President"]}}).pretty();
+
+db.Employees.update({"Id": 1}, {"$set":{"contact.email": "steve.badiola@gov.ph", "contact.phone": "+ 1 1234567"}});
+db.Employees.update({"Id": 2}, {"$set":{"contact.email": "jamir.garcia@gov.ph", "contact.phone": "+ 2 1234567"}});
+db.Employees.update({"Id": 3}, {"$set":{"contact.email": "reg.rubio@gov.ph", "contact.phone": "+ 3 1234567"}});
+db.Employees.update({"Id": 4}, {"$set":{"contact.email": "ian.tayao@gov.ph", "contact.phone": "+ 4 1234567"}});

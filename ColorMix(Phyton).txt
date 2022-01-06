@@ -1,0 +1,12 @@
+print("Enter the colors that you want to mix.")
+color1 = input ("Enter First Color: \n")
+color2 = input ("Enter Second Color: \n")
+
+if (color1 == "Red" and color2 == "Blue") or (color1 == "Blue" and color2 == "Red"):
+    print('{} + {} = Purple' .format(color1,color2))
+elif (color1 == "Red" and color2 == "Yellow") or (color1 == "Yellow" and color2 == "Red"):
+    print('{} + {} = Orange' .format(color1,color2))
+elif (color1 == "Blue" and color2 == "Yellow") or (color1 == "Yellow" and color2 =="Blue"):
+    print('{} + {} = Green' .format(color1,color2))
+else:
+    print('You input two the same primary colors or you input the secondary color neither in the first color or second color.')

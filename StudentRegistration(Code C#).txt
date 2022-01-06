@@ -1,0 +1,33 @@
+using System;
+namespace StudentRegistrationApp
+{
+    class frmStudentRegistration
+    {
+        static void Main (string[] args)
+        {
+            Console.Write("Last Name: ");
+            string lname = Console.ReadLine();
+            Console.Write("First Name: ");
+            string fname = Console.ReadLine();
+            Console.Write("Middle Name: ");
+            string mname = Console.ReadLine();
+            Console.Write("Enter Gender: ");
+            string gender = Console.ReadLine();
+            Console.Write("Enter Month: ");
+            int month; 
+            month = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter Day: ");
+            int day;
+            day = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter Year: ");
+            int year;
+            year = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("Student Name: " + fname + mname + lname);
+            Console.WriteLine("Gender: " + gender);
+            Console.WriteLine("Date of Birth: " + month + "/" + day + "/" + year);
+            Console.Write("\nPress any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}

@@ -1,0 +1,85 @@
+#include <ctime>
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+int main() {
+    srand(time(NULL));
+    int comp_tries;
+    int tries;
+    int guess;
+    int answer;
+    int Rand_Num;
+    int low = 1;
+    int high = 100;
+    char again = 'Y';
+    guess = rand() % high + low;
+    
+    cout << "Hi! Let's play a game that I can learn from.\n";
+    cout << "I'll pick a number between 1 and 100 and you"
+         << " will try to guess and then you'll pick the number"
+         << " and I'll guess it.\n\n";
+    cin.get();
+    while (again == 'Y') {
+        cout << "Please pick a number between 1 and 100 and I will try to guess it.\n";
+        cout << "Please hit the enter key when you are ready to begin.";
+        cin.get();
+        cout << "Is your number: " << guess << "?\n";
+        comp_tries = 1;
+        cout << "Type 1 if yes, 2 if your number is lower or 3 if it is higher: ";
+        cin >> answer;
+        for (; answer !=1; comp_tries++) {
+            if (answer == 2) {
+                high = guess;
+                guess = rand() % ((high--)-low) + low;
+                cout << "Then is your number: " << guess << "?\n";
+                cout << "Type 1 if yes, 2 if your number is lower or 3 if it is higher: ";
+                cin >> answer;
+                cin.ignore();
+            }  
+            else if (answer == 3) {
+                low = guess;
+                guess = rand() % (high-(low++)) + (low++);
+                cout << "Then is your number: " << guess << "?\n";
+                cout << "Type 1 if yes, 2 if your number is lower or 3 if it is higher: ";
+                cin >> answer;
+                cin.ignore();
+           }
+        } 
+        cout << "I guessed your number in " << comp_tries << " tries.\n";
+        cin.get();
+        Rand_Num = rand() % 100 + 1;
+        cout << "Try to guess my number between 1 and 100: ";
+        cin >> guess;
+        tries = 1;
+        while (guess != Rand_Num) {
+            if (guess > Rand_Num) {
+                cout << "Sorry! Please guess a lower number: ";
+                cin >> guess;
+                tries = tries + 1;
+            }
+            if (guess < Rand_Num) {
+                cout << "Sorry! Please guess a higher number: ";
+                cin >> guess;
+                tries = tries + 1;
+            }
+        }
+        cin.ignore();  
+        cout << "You guessed my number in " << tries << " tries. Good Job\n";
+        if (comp_tries > tries) {
+            cout << "You beat me at my own game!\n";
+        }
+        else if (comp_tries < tries) {
+            cout << "You humans aren't very logical are you? I won!\n";
+        }
+        else if (comp_tries == tries) {
+            cout << "We tied! We better have a rematch.\n";
+        }
+        cout << "Would you like to challenge me again? Y/N:\n";
+        cin >> again;
+    }
+    cin.ignore();
+    cout << "Thanks for playing with me! Come back soon";
+    cin.get();
+    return 0;
+}
